@@ -9,6 +9,8 @@
 <br />
 
 [![npm version](https://img.shields.io/npm/v/superspec?color=14b8a6&style=flat-square)](https://www.npmjs.com/package/superspec)
+[![npm downloads](https://img.shields.io/npm/dm/superspec?color=14b8a6&style=flat-square)](https://www.npmjs.com/package/superspec)
+[![CI](https://img.shields.io/github/actions/workflow/status/HankLiu447/superspec/ci.yml?branch=main&style=flat-square&color=14b8a6)](https://github.com/HankLiu447/superspec/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-14b8a6.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-≥18.0.0-14b8a6?style=flat-square)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-14b8a6?style=flat-square)](https://www.typescriptlang.org/)
