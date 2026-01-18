@@ -8,6 +8,7 @@ import { validateCommand } from './commands/validate.js';
 import { archiveCommand } from './commands/archive.js';
 import { verifyCommand } from './commands/verify.js';
 import { viewCommand } from './commands/view.js';
+import { settingCommand } from './commands/setting.js';
 import { PALETTE, MINI_BANNER } from './ui/index.js';
 
 const program = new Command();
@@ -78,6 +79,14 @@ program
   .option('-y, --yes', 'Non-interactive mode (skip confirmations)')
   .option('--skip-specs', 'Skip spec updates (tooling-only changes)')
   .action(archiveCommand);
+
+// Setting command
+program
+  .command('setting')
+  .alias('settings')
+  .alias('config')
+  .description('Configure SuperSpec settings (External AI Review, etc.)')
+  .action(settingCommand);
 
 // Default action - show dashboard
 program.action(async () => {
