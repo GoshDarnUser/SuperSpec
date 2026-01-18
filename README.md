@@ -102,6 +102,44 @@ Most development workflows suffer from **specification drift** — where documen
 <br /><br />
 </td>
 </tr>
+<tr>
+<td align="center" width="25%">
+<br />
+<img src="https://img.icons8.com/fluency/48/synchronize.png" width="36" />
+<br /><br />
+<strong>Context-Aware</strong>
+<br />
+<sub>Phase Protocol prevents AI drift</sub>
+<br /><br />
+</td>
+<td align="center" width="25%">
+<br />
+<img src="https://img.icons8.com/fluency/48/tasklist.png" width="36" />
+<br /><br />
+<strong>Gate-Verified</strong>
+<br />
+<sub>Entry/Exit gates ensure nothing skipped</sub>
+<br /><br />
+</td>
+<td align="center" width="25%">
+<br />
+<img src="https://img.icons8.com/fluency/48/module.png" width="36" />
+<br /><br />
+<strong>Phase-Based</strong>
+<br />
+<sub>Structured multi-phase execution</sub>
+<br /><br />
+</td>
+<td align="center" width="25%">
+<br />
+<img src="https://img.icons8.com/fluency/48/parallel-tasks.png" width="36" />
+<br /><br />
+<strong>Subagent-Driven</strong>
+<br />
+<sub>Parallel task execution with reviews</sub>
+<br /><br />
+</td>
+</tr>
 </table>
 
 <br />
@@ -258,6 +296,7 @@ SuperSpec provides skills that integrate seamlessly with [Claude Code](https://c
 
 | Skill | Description |
 |:------|:------------|
+| `phase-protocol` | **Prevents context drift during long sessions** |
 | `tdd` | TDD cycle with anti-pattern awareness |
 | `git-worktree` | Isolated development with git worktrees |
 | `systematic-debugging` | Root cause analysis methodology |
@@ -352,6 +391,44 @@ SuperSpec enforces a two-phase review process:
 │  ✓ Test quality                        │
 └────────────────────────────────────────┘
 ```
+
+<br />
+
+## 🔄 Phase Protocol (Context Drift Prevention)
+
+AI assistants often **forget tasks during long development sessions** as context gets compressed. SuperSpec's Phase Protocol solves this with a structured approach:
+
+```
+┌────────────────────────────────────────────────────────────────┐
+│  PHASE PROTOCOL                                                 │
+├────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  ENTRY (start of each phase):                                   │
+│    1. Read phase-protocol skill (refresh context)               │
+│    2. Read tasks.md (get task list)                             │
+│    3. CREATE TODO IMMEDIATELY ← Before reading other docs!      │
+│    4. Gate: Verify TODO completeness                            │
+│    5. Read plan.md, design.md, specs/*.md                       │
+│    6. Gate: Output key understanding                            │
+│    7. Begin implementation                                      │
+│                                                                  │
+│  EXIT (end of each phase):                                      │
+│    1. Update tasks.md                                           │
+│    2. Git commit                                                │
+│    3. Re-read phase-protocol skill ← Loop back!                 │
+│    4. Create next phase TODO                                    │
+│                                                                  │
+└────────────────────────────────────────────────────────────────┘
+```
+
+### Why This Works
+
+| Mechanism | Purpose |
+|:----------|:--------|
+| **TODO created early** | Survives context compression — won't be forgotten |
+| **Gate verification** | Ensures nothing skipped before proceeding |
+| **Exit Gate re-read** | Forces context refresh at phase boundaries |
+| **Structured loop** | Exit → Re-read → Entry → Exit → continues automatically |
 
 <br />
 
