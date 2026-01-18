@@ -25,6 +25,7 @@
     "@typescript-eslint/no-non-null-assertion": "warn",
     "no-console": "off",
     "no-case-declarations": "off",
+    "no-control-regex": "off",
     "prefer-const": "error",
     "no-var": "error"
   },
