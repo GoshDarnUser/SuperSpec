@@ -210,69 +210,81 @@ const BANNER_ART = `
 `;
 
 /**
- * Apply teal gradient to banner text
+ * Apply clean, uniform teal color to banner
  */
 function applyBannerGradient(text: string): string {
-  const gradientColors = [
-    '#0d9488', // Teal-600
-    '#0f766e', // Teal-700
-    '#14b8a6', // Teal-500
-    '#2dd4bf', // Teal-400
-    '#5eead4', // Teal-300
-    '#2dd4bf', // Teal-400
-    '#14b8a6', // Teal-500
-    '#0f766e', // Teal-700
-  ];
+  const colors = {
+    main: '#2dd4bf',      // Teal-400 (bright, clean)
+    border: '#14b8a6',    // Teal-500 (letter borders)
+    box: '#475569',       // Slate-600 (frame)
+  };
 
   const lines = text.split('\n');
-  return lines.map((line, lineIndex) => {
-    return line.split('').map((char, charIndex) => {
+  return lines.map((line) => {
+    return line.split('').map((char) => {
       if (char === ' ' || char === '\n') return char;
 
-      // Box characters get muted color
+      // Box frame characters
       if ('╭╮╰╯─│'.includes(char)) {
-        return PALETTE.subtle(char);
+        return chalk.hex(colors.box)(char);
       }
 
-      // Banner text gets gradient
-      const colorIndex = Math.floor((charIndex / Math.max(line.length, 1)) * gradientColors.length);
-      const color = gradientColors[Math.min(colorIndex, gradientColors.length - 1)]!;
-      return chalk.hex(color)(char);
+      // Decorative border characters within letters
+      if ('╗╝╚╔║═'.includes(char)) {
+        return chalk.hex(colors.border)(char);
+      }
+
+      // All main block characters - uniform bright teal
+      return chalk.hex(colors.main)(char);
     }).join('');
   }).join('\n');
 }
 
 /**
- * Minimal banner for tight spaces
+ * Minimal banner for tight spaces (with two-tone design)
  */
-const MINIMAL_BANNER = `
-  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-  ┃  ⬡  S U P E R S P E C                                      ┃
-  ┃     Spec-Driven Development Framework                      ┃
-  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-`;
+const MINIMAL_BANNER_TEMPLATE = {
+  top: '  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓',
+  title: '  ┃  ⬡  ',
+  super: 'S U P E R',
+  spec: 'S P E C',
+  titleEnd: '                                      ┃',
+  subtitle: '  ┃     Spec-Driven Development Framework                      ┃',
+  bottom: '  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛',
+};
 
-function applyMinimalBannerStyle(text: string): string {
-  const lines = text.split('\n');
-  return lines.map(line => {
-    return line.split('').map(char => {
-      if ('┏┓┗┛━┃'.includes(char)) return PALETTE.subtle(char);
-      if (char === '⬡') return PALETTE.primary(char);
-      if ('SUPERSPEC'.includes(char)) return PALETTE.primaryBright(char);
-      return PALETTE.dim(char);
-    }).join('');
-  }).join('\n');
+/**
+ * Build minimal banner with uniform teal
+ */
+function buildMinimalBanner(): string {
+  const t = MINIMAL_BANNER_TEMPLATE;
+  const teal = chalk.hex('#2dd4bf');
+
+  return [
+    PALETTE.subtle(t.top),
+    PALETTE.subtle(t.title.slice(0, 5)) + PALETTE.primary('⬡') + PALETTE.subtle('  ') +
+      teal(t.super + t.spec) + PALETTE.subtle(t.titleEnd),
+    PALETTE.subtle(t.subtitle),
+    PALETTE.subtle(t.bottom),
+  ].join('\n');
+}
+
+/**
+ * Brand name styling - clean bright teal
+ */
+function styledBrandName(): string {
+  return chalk.hex('#2dd4bf').bold('SuperSpec');
 }
 
 export const BANNER = `${applyBannerGradient(BANNER_ART)}
-  ${PALETTE.white('Welcome to')} ${PALETTE.bold(PALETTE.primaryBright('SuperSpec'))}
+  ${PALETTE.white('Welcome to')} ${styledBrandName()}
   ${PALETTE.dim('Spec-Driven Development Framework')}
   ${PALETTE.subtle('─'.repeat(40))}
 `;
 
-export const MINI_BANNER = applyMinimalBannerStyle(MINIMAL_BANNER);
+export const MINI_BANNER = buildMinimalBanner();
 
-export const INLINE_LOGO = `${PALETTE.primary('⬡')} ${PALETTE.bold(PALETTE.primaryBright('SuperSpec'))}`;
+export const INLINE_LOGO = `${PALETTE.primary('⬡')} ${styledBrandName()}`;
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // HEADER & SECTION DECORATORS
