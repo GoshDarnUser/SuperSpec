@@ -7,14 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2025-01-18
+
 ### Added
-- Initial public release preparation
 - LICENSE file (MIT)
 - CONTRIBUTING.md guidelines
-- GitHub Actions CI/CD workflow
+- GitHub Actions CI/CD workflows
 - ESLint and Prettier configuration
+- GitHub Issue and PR templates
+- GitHub Discussions enabled
 
-## [0.1.0] - 2024-01-18
+### Fixed
+- ESLint `no-control-regex` rule for ANSI escape codes in CLI
+- Added `@vitest/coverage-v8` for CI coverage reporting
+
+## [0.1.0] - 2025-01-18
 
 ### Added
 - **Core Framework**
@@ -50,5 +57,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Detailed DESIGN.md
   - CLAUDE.md project instructions
 
-[Unreleased]: https://github.com/HankLiu447/superspec/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/HankLiu447/superspec/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/HankLiu447/superspec/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/HankLiu447/superspec/releases/tag/v0.1.0
