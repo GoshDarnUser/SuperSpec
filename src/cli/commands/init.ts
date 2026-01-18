@@ -42,6 +42,12 @@ const SKILL_MAPPINGS: Record<string, string> = {
   // Execution skills
   'dispatching-parallel-agents': 'dispatching-parallel-agents',
   'executing-plans': 'executing-plans',
+  // Phase protocol
+  'phase-protocol': 'phase-protocol',
+  // External AI review
+  'external-review': 'external-review',
+  'codex': 'codex',
+  'gemini': 'gemini',
   // Other skills
   'spec-validation': 'spec-validation',
   'using-superspec': 'using-superspec',
@@ -272,6 +278,21 @@ git:
 test:
   command: npm test
   coverage: false
+
+# External AI Review settings
+# Enable to have external AI (Codex/Gemini) review your code after implementation
+review:
+  enabled: false                     # Master switch for external AI review
+
+  # Frontend task review (UI, components, styling)
+  frontend:
+    provider: gemini                 # gemini | codex | none
+    model: gemini-3-pro-preview
+
+  # Backend task review (API, logic, data)
+  backend:
+    provider: codex                  # codex | gemini | none
+    model: gpt-5.2-codex
 `;
     writeFileSync(configPath, config);
 

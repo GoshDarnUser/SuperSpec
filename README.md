@@ -297,6 +297,9 @@ SuperSpec provides skills that integrate seamlessly with [Claude Code](https://c
 | Skill | Description |
 |:------|:------------|
 | `phase-protocol` | **Prevents context drift during long sessions** |
+| `external-review` | **External AI code review (Codex/Gemini)** |
+| `codex` | OpenAI Codex CLI integration |
+| `gemini` | Google Gemini CLI integration |
 | `tdd` | TDD cycle with anti-pattern awareness |
 | `git-worktree` | Isolated development with git worktrees |
 | `systematic-debugging` | Root cause analysis methodology |
@@ -429,6 +432,62 @@ AI assistants often **forget tasks during long development sessions** as context
 | **Gate verification** | Ensures nothing skipped before proceeding |
 | **Exit Gate re-read** | Forces context refresh at phase boundaries |
 | **Structured loop** | Exit → Re-read → Entry → Exit → continues automatically |
+
+<br />
+
+## 🤖 External AI Review (Optional)
+
+SuperSpec supports optional code review by external AI models (Codex/Gemini). Configure different providers for frontend vs backend tasks.
+
+### Configuration
+
+In `superspec/project.yaml`:
+
+```yaml
+review:
+  enabled: true                      # Enable external AI review
+
+  frontend:                          # For UI/component tasks
+    provider: gemini                 # gemini | codex | none
+    model: gemini-3-pro-preview
+
+  backend:                           # For API/logic tasks
+    provider: codex                  # codex | gemini | none
+    model: gpt-5.2-codex
+```
+
+### How It Works
+
+```
+Implementation (TDD)
+        ↓
+[Task type detection]
+        │
+        ├─→ Frontend task → Gemini review
+        │
+        └─→ Backend task → Codex review
+        │
+        ↓
+Hallucination check (CRITICAL!)
+        ↓
+Apply validated fixes only
+```
+
+### Hallucination Check
+
+**Before applying ANY external AI suggestion:**
+
+| Check | Why |
+|:------|:----|
+| **File exists?** | AI may reference non-existent files |
+| **Function exists?** | AI may suggest changes to phantom code |
+| **Makes sense?** | Must align with project architecture |
+| **Not duplicate?** | May suggest already-implemented features |
+
+### Prerequisites
+
+- [Codex CLI](https://github.com/openai/codex) installed and authenticated
+- [Gemini CLI](https://github.com/google/gemini-cli) installed and authenticated
 
 <br />
 

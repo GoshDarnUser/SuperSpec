@@ -143,6 +143,17 @@ Stay in this session?
 │                                              Update tasks.md       │
 │                                              Update plan.md        │
 │                                                                     │
+├────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   ┌─────────────────────────────────────────────────────────────┐  │
+│   │ 4. External AI Review (if review.enabled in project.yaml)   │  │
+│   │    - Check task type: [FRONTEND] or [BACKEND]               │  │
+│   │    - Frontend → Use review.frontend.provider (gemini/codex) │  │
+│   │    - Backend → Use review.backend.provider (codex/gemini)   │  │
+│   │    - Read external-review skill for details                  │  │
+│   │    - CRITICAL: Hallucination check before applying fixes!   │  │
+│   └─────────────────────────────────────────────────────────────┘  │
+│                                                                     │
 └────────────────────────────────────────────────────────────────────┘
 
 [All tasks complete]
@@ -557,6 +568,89 @@ If needs work, list required fixes (Critical + Important).
 2. Quality Reviewer reviews again
 3. Repeat until approved
 4. Suggestions are optional
+
+## Step 4.5: External AI Review (Optional)
+
+**Check `superspec/project.yaml` for review configuration:**
+
+```yaml
+review:
+  enabled: true/false    # If false, skip this entire step
+
+  frontend:
+    provider: gemini     # gemini | codex | none
+    model: gemini-3-pro-preview
+
+  backend:
+    provider: codex      # codex | gemini | none
+    model: gpt-5.2-codex
+```
+
+### When to Execute
+
+```
+review.enabled == false?  → Skip to Step 5
+review.enabled == true?   → Continue below
+```
+
+### Determine Task Type and Provider
+
+**Task is `[FRONTEND]`?**
+- Use `review.frontend.provider`
+- If `none` → Skip external review
+
+**Task is `[BACKEND]`?**
+- Use `review.backend.provider`
+- If `none` → Skip external review
+
+### Execute External Review
+
+**Read `external-review` skill for full details:** `skills/external-review/SKILL.md`
+
+**Quick reference:**
+
+```bash
+# For Gemini (typically frontend):
+uv run ~/.claude/skills/gemini/scripts/gemini.py \
+  -m [review.frontend.model] \
+  -p "Review this code: $(cat [file])"
+
+# For Codex (typically backend):
+uv run ~/.claude/skills/codex/scripts/codex.py \
+  "Review @[file] for issues" \
+  [review.backend.model]
+```
+
+### 🔴 CRITICAL: Hallucination Check
+
+**Before applying ANY suggestion from external AI:**
+
+```markdown
+□ File exists? - Verify mentioned file paths
+□ Function exists? - Search codebase for mentioned symbols
+□ Makes sense? - Aligns with project architecture?
+□ Not duplicate? - Not already implemented?
+
+✅ Validated → Apply
+❌ Hallucination → Ignore and document
+⚠️ Partial → Modify before applying
+```
+
+**DO NOT blindly apply external AI suggestions!**
+
+### Document Review Results
+
+```markdown
+## External AI Review ([Codex/Gemini])
+
+### Applied
+1. [Suggestion] - [File] - [Change made]
+
+### Rejected (Hallucination)
+1. [Suggestion] - Reason: [file doesn't exist / etc.]
+
+### Review Complete
+```
 
 ## Step 5: Mark Complete and Update Documents
 
