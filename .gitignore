@@ -38,3 +38,6 @@ superspec/changes/*/
 *.tmp
 *.temp
 .serena/
+
+# Claude Code local config
+.claude/
