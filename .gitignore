@@ -41,3 +41,6 @@ superspec/changes/*/
 
 # Claude Code local config
 .claude/
+
+# Private agent instructions
+AGENTS.md
